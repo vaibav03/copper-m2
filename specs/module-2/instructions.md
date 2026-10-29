@@ -77,7 +77,8 @@ improves:
 
 Then run npm run check, npm test, npm run lint, npm run typecheck and npm run
 format, fix anything that fails without touching specs/*/tests, and tell me
-the final count. It should be 27 of 27. Commit and push.
+the final count. It should be 27 of 27. Commit and push to origin, which is
+my own copper-m2 repo.
 ```
 
 Expect this to take a while and to ask you to approve edits. When it says 27 of
@@ -136,13 +137,17 @@ touching code.
 Paste this:
 
 ```
-In this repo, take the part 2 files from the course remote without merging the
-branch, so nothing I wrote in part 1 is touched:
-git fetch course
-git checkout course/module-2-part-2 -- supabase lib/supabase .mcp.json specs/module-2/instructions.md specs/module-2/spec.md package.json package-lock.json
+In this repo, pull the part 2 files from the course remote (the class repo;
+my own repo is origin). First commit anything uncommitted, then:
+git pull --no-rebase course module-2-part-1
 npm install
-Then show me what changed.
+If the merge stops over specs/module-2/report.md, that worksheet was retired:
+delete it and finish the merge. Then show me what changed.
 ```
+
+That brings in the migration, the seed, the Supabase client and the MCP config,
+and keeps everything you wrote in part 1 — including any shadcn or AI Elements
+components you added.
 
 While it runs, go to [supabase.com](https://supabase.com) and sign up with
 your personal email, not your ASU one. Stop there — you don't need to create
@@ -170,8 +175,9 @@ database:
    readInventory() to read every row from the Supabase inventory table instead
    of the JSON file, keeping the same return type: InventoryRow[] when it
    works, null when it can't read.
-5. Delete lib/copper/data/inventory.json, run npm run check, commit, push, and
-   redeploy to Vercel.
+5. Delete lib/copper/data/inventory.json, run npm run check, commit, push to
+   origin (my own copper-m2 repo, not the course remote), and redeploy to
+   Vercel.
 ```
 
 `npm run check` must still say **27 of 27**. The tests replace the whole

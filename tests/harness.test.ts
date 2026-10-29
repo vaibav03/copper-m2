@@ -23,11 +23,20 @@ describe("Agent harness", () => {
     );
   });
 
-  it("configures the shadcn and docs MCP servers", () => {
+  it("configures the shadcn, docs, Supabase and Vercel MCP servers", () => {
     expect(Object.keys(mcp.mcpServers).sort()).toEqual([
       "next-devtools",
       "shadcn",
+      "supabase",
+      "vercel",
     ]);
+  });
+
+  // Module 2 part 2 has Claude apply a migration and seed the table, so the
+  // Supabase server must not be scoped read-only. Leaving project_ref off
+  // keeps the account tools, which is how Claude creates the project.
+  it("gives the Supabase MCP server write access", () => {
+    expect(mcp.mcpServers.supabase.url).toBe("https://mcp.supabase.com/mcp");
   });
 
   it("CLAUDE.md uses the same rules as AGENTS.md", () => {
