@@ -6,6 +6,7 @@ const LINKS = [
   { href: "#products", label: "Products" },
   { href: "#plus", label: "Copper Plus" },
   { href: "#privacy", label: "Privacy" },
+  { href: "#ask", label: "Ask Copper" },
 ];
 
 export function SiteHeader() {
