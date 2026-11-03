@@ -43,3 +43,6 @@ next-env.d.ts
 # grading output and caches
 .grading/
 .vitest-cache/
+
+# Supabase CLI scratch files
+supabase/.temp
